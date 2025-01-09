@@ -78,7 +78,6 @@ h1 a {
     padding: 0;
     display: flex;
     gap: 20px;
-    flex-wrap: wrap; /* Allows wrapping of links on small screens */
 }
 
 .navbar li {
@@ -140,43 +139,60 @@ h1 a {
     background-color: #0a6f98;
 }
 
-/* Remove Hamburger Menu and Show Navbar Fully on Mobile */
+/* Hamburger Menu for Mobile */
 .hamburger-menu {
     display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
 }
 
-/* Responsive Adjustments */
+.hamburger-menu div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+}
+
 @media (max-width: 768px) {
-    .primary-nav {
-        flex-direction: column;
-        padding: 10px 20px;
-        align-items: center;
-    }
-
+    /* Responsive Adjustments */
     .navbar {
-        flex-direction: row; /* Horizontal layout on small screens */
-        justify-content: space-between;
-        width: 100%;
+        display: none;
+        flex-direction: column;
         gap: 15px;
+        align-items: center;
+        width: 100%;
     }
 
-    .navbar li {
-        display: block; /* Each link appears on a new line if necessary */
-        text-align: center;
-        padding: 10px;
+    .navbar.open {
+        display: flex;
     }
 
     .top-nav {
-        flex-direction: row;
-        gap: 15px;
-        margin-top: 15px;
+        display: none;
     }
 
-    .top-nav a {
-        padding: 8px 20px;
-        border-radius: 30px;
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .primary-nav {
+        flex-direction: column;
+        padding: 10px 0;
+        align-items: flex-start;
+    }
+
+    .primary-nav.open .navbar {
+        display: flex;
+    }
+
+    .primary-nav.open .top-nav {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
     }
 }
+
 
 /* Hero Section */
 .hero {
